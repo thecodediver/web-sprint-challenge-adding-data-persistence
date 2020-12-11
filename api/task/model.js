@@ -5,7 +5,9 @@ function getTasks() {
 }
 
 function addTask(task) {
-  return db("tasks").insert(task)
+  return db("tasks").insert(task).then(([id]) => {
+    return db("tasks").where("id", id).first()
+  })
 }
 
 module.exports = {
