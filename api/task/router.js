@@ -5,6 +5,7 @@ router.get("/", (req, res) => {
   Tasks.getTasks().then(data => {
     const formattedData = data.map(item => {
       item.completed = item.completed === 0 ? false : true
+      return item
     })
     res.status(200).json(formattedData)
   })
